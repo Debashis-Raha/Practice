@@ -20,7 +20,7 @@ const MainNavigation = () => {
         <Tab.Screen name='list' component={List}/>
         <Tab.Screen name='settings' component={Settings}/>
     </Tab.Navigator> */}
-<Stack.Navigator initialRouteName='signup'>
+<Stack.Navigator initialRouteName='login'>
   <Stack.Screen name ='login' component={LoginRoutes}/>
   <Stack.Screen name='home' component={Home}/>
   <Stack.Screen name='signup' component={SignUp} options={{headerShown:false}}/>

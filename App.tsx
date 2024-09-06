@@ -50,9 +50,9 @@ const App = () => {
 
   return (
     <View style={{flex: 1}}>
-      <SignUp />
-      {/* <MainNavigation/>
-    <Text>Test</Text> */}
+      {/* <SignUp /> */}
+      <MainNavigation/>
+    {/* <Text>Test</Text> */} 
     </View>
   );
 };

@@ -2,6 +2,7 @@ import { Button, StyleSheet, Text, TextInput, View } from 'react-native';
 import React, { useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import auth from '@react-native-firebase/auth';
+import { useNavigation } from '@react-navigation/native';
 
 const SignUp = () => {
   const {
@@ -11,22 +12,22 @@ const SignUp = () => {
   } = useForm();
   
   const [user, setUser] = useState(null);
+  const navigation = useNavigation();
 
   const handleSignUp = ({ email, password }) => {
-    auth()
-      .createUserWithEmailAndPassword(email, password)
+    auth().createUserWithEmailAndPassword(email, password)
       .then(res => {
         setUser(res.user);
+        navigation.navigate('login'); // Uncommented this line
       })
       .catch(error => {
         if (error.code === 'auth/email-already-in-use') {
           console.log('That email address is already in use!');
-        }
-
-        if (error.code === 'auth/invalid-email') {
+        } else if (error.code === 'auth/invalid-email') {
           console.log('That email address is invalid!');
+        } else {
+          console.error(error);
         }
-        console.error(error);
       });
   };
 
